@@ -4,6 +4,7 @@ class CreateProperties < ActiveRecord::Migration
       t.string :address
       t.string :price
       t.text :description
+      t.string :image_url
       t.integer :landlord_id
 
       t.timestamps null: false

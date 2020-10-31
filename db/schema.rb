@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20201031075242) do
     t.string   "address"
     t.string   "price"
     t.text     "description"
+    t.string   "image_url"
     t.integer  "landlord_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
