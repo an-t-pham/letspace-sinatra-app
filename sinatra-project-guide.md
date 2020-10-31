@@ -19,7 +19,7 @@
 
 - [x] 5. Generate new project using corneal gem
 - [x] 6. Create github repo
-- [] 7. Build your models
+- [x] 7. Build your models
      - Migrations
      - Model classes
      - Associations
