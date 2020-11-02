@@ -23,16 +23,54 @@
      - Migrations
      - Model classes
      - Associations
-- [] 8. Test your models and associations in the console
+- [x] 8. Test your models and associations in the console
      - Create some seed data
+     - Tested our associations in 'tux'
      - Adjust migrations as needed
+
+**KEYWORDS FOR ASSESSMENT**
+- ActiveRecord
+- MVC
+- Assosciations (has_many, belongs_to, has_many: :through)
 
 
 ### PART 2
 
-**NOW, CONSIDER CONTROLLERS AND VIEWS**
+**NOW, CONSIDER CONTROLLERS, APPLICATION CONTROLLER, AND VIEWS**
 
-- [] 9. Start with your ApplicationController helpers - '#logged_in?' and '#current_user'
-     - add your login/signup/signout routes  
-- [] 10. Build out controller routes for other models (add a controller for each model)
-- [] 11. Build views and controller actions based on the flow of your app, one step at a time, testing as you go!
+*IMPORTANT:* Build views and controller actions based on the flow of your app, one step at a time, testing as you go!
+
+- Use 'shotgun' and 'pry' (or 'raise'/'inspect') all the time!
+
+**START WITH LOGIN**
+
+- [x] 9. Create your 'UsersController'
+   - Mount new controller in 'config.ru' with 'use LandlordsController' (why do we add this?) 
+
+- [] 10. Enable 'session' in 'ApplicationController'
+   - Enable sessions
+   - Create session secret
+
+
+
+- [x] 11. Build routes and views for login
+    - Build your 'get' login route + "login" view
+    - Build your 'post' login route
+         -**Tip**: Here is where authenticate the user and leverage the session hash to log them in!
+    - Build your 'get users/:id' route + "show" view
+
+- [] 12. Create your 'ApplicationController' helper methods
+   - **Ask**: Why do we add this?
+   - '#logged_in?': checks if the user is logged in
+   - '#current_user' :keeps track of the user currently logged in
+
+ Start with your ApplicationController helpers - '#logged_in?' and '#current_user'
+add your login/signup/signout routes 
+
+**MOVE ON TO SIGN UP**
+- [] 13. Build routes and views for signup
+    - Build your 'get' signup route + "signup" view
+    - Build your 'post' signup route
+
+   
+Build out controller routes for other models (add a controller for each model)
