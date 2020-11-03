@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 
-    <title>LetspaceSinatraApp</title>
+    <title>LetSpace Sinatra App</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -15,11 +15,17 @@
   </head>
   <body>
     <div class="wrapper">
-
+        <div class="nav">
+          <% if logged_in? %>
+             <a href="/">All Properties</a>
+             <a href="/">Add a Property</a>
+             <a href="/logout">Log Out</a>
+          <% end %>
+        </div>
         <%= yield %>
 
       <footer class="branding">
-        <small>&copy; 2020 <strong>LetspaceSinatraApp</strong></small>
+        <small>&copy; 2020 <strong>LetSpaceSinatraApp</strong></small>
       </footer>
     </div>
 

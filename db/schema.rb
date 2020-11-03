@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201031075242) do
+ActiveRecord::Schema.define(version: 20201102161845) do
 
   create_table "landlords", force: :cascade do |t|
     t.string   "name"
-    t.text     "profile"
+    t.text     "bio"
     t.string   "image_url"
     t.string   "email"
     t.string   "password_digest"

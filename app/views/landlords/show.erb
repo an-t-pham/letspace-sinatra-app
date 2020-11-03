@@ -1,0 +1,9 @@
+<h1><%= @landlord.name %>! </h1>
+
+<img src="<%= @landlord.image_url %>" alt="<%= @landlord.name %> profile photo" height="200" width="200">
+<ul>Your Properties:
+   <% @landlord.properties.each_with_index do |property, index| %>
+      <li><%= index + 1%>.<%= property.address %></li>
+   <% end %>
+</ul>
+

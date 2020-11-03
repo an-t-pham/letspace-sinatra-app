@@ -47,7 +47,7 @@
 - [x] 9. Create your 'UsersController'
    - Mount new controller in 'config.ru' with 'use LandlordsController' (why do we add this?) 
 
-- [] 10. Enable 'session' in 'ApplicationController'
+- [x] 10. Enable 'session' in 'ApplicationController'
    - Enable sessions
    - Create session secret
 
@@ -59,7 +59,7 @@
          -**Tip**: Here is where authenticate the user and leverage the session hash to log them in!
     - Build your 'get users/:id' route + "show" view
 
-- [] 12. Create your 'ApplicationController' helper methods
+- [x] 12. Create your 'ApplicationController' helper methods
    - **Ask**: Why do we add this?
    - '#logged_in?': checks if the user is logged in
    - '#current_user' :keeps track of the user currently logged in
@@ -71,6 +71,18 @@ add your login/signup/signout routes
 - [] 13. Build routes and views for signup
     - Build your 'get' signup route + "signup" view
     - Build your 'post' signup route
+
+**WRAP UP WITH LOG OUT**
+- [] 14. Build your 'get' logout route
+
+### PART 3 - CRUD: Create, Read, Update, Delete
+
+- [] 15. Create your 'PostsController'
+  - Mount new controller in 'config.ru' with 'use PostsController'
+  - **Ask**: Why do we add this?
+
+- [] 16. Implement READ functionality
+
 
    
 Build out controller routes for other models (add a controller for each model)

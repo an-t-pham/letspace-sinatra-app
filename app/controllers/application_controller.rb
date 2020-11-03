@@ -10,7 +10,21 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :welcome
+    if logged_in?
+      redirect "/landlords/#{current_landlord.id}"
+    else
+      erb :welcome
+    end
+  end
+
+  helpers do
+    def current_landlord
+      Landlord.find_by(id: session[:landlord_id])
+    end
+
+    def logged_in?
+      !!current_landlord
+    end
   end
 
 end

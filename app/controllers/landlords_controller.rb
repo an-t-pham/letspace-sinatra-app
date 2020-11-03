@@ -1,7 +1,7 @@
 class LandlordsController < ApplicationController
 
   get "/login" do
-    erb :login
+    erb :"landlords/login"
   end
 
   post "/login" do
@@ -15,6 +15,24 @@ class LandlordsController < ApplicationController
   end
 
   get "/landlords/:id" do
-    "landlords show page!"
+    @landlord = Landlord.find_by(id: params[:id])
+    erb :"/landlords/show"
+  end
+
+  get "/signup" do
+    erb :"/landlords/signup"
+  end
+
+  post "/landlords" do
+    @landlord = Landlord.create(params)
+
+    session[:landlord_id] = @landlord.id
+
+    redirect "/landlords/#{@landlord.id}"
+  end
+
+  get "/logout" do
+    session.clear
+    redirect "/"
   end
 end
