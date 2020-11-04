@@ -1,7 +1,10 @@
-User.destroy_all
+Landlord.destroy_all
+Property.destroy_all
+Tenant.destroy_all
+PropertyTenant.destroy_all
 
-joe = Landlord.create(name: "Joe Bear", profile: "A good landlord with cheap houses", image_url: "https://unsplash.com/photos/Py8F6-hRn5o", email: "joe@test.com", password: "1234abc")
-jane = Landlord.create(name: "Jane Smith", profile: "A friendly landlady with big houses", image_url: "https://www.pexels.com/photo/photo-of-woman-wearing-brown-jacket-3657429/", email: "jane@test.com", password: "abc321")
+joe = Landlord.create(name: "Joe Bear", bio: "A good landlord with cheap houses", image_url: "https://images.unsplash.com/photo-1503443207922-dff7d543fd0e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=882&q=80", email: "joe@test.com", password: "1234abc")
+jane = Landlord.create(name: "Jane Smith", bio: "A friendly landlady with big houses", image_url: "https://images.pexels.com/photos/3657429/pexels-photo-3657429.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260", email: "jane@test.com", password: "abc321")
 
 dulverton = Property.create(address: "123 Dulverton Court", price: "£800pcm", description: "located in central", image_url: "https://assets.themodernhouse.com/wp-content/uploads/2019/12/The-Coach-House-St-Donatts-Road-London-SE14-21-1-1600x1067.jpg", landlord_id: jane.id)
 london = Property.create(address: "7 London Road", price: "£1000pcm", description: "big and clean house", image_url: "https://www.idesignarch.com/wp-content/uploads/Hyde-Park-Mews_1-1024x683.jpg", landlord_id: jane.id)

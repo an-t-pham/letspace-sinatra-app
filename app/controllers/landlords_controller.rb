@@ -14,6 +14,22 @@ class LandlordsController < ApplicationController
     end
   end
 
+  get "/landlords/properties" do
+    @landlord = Landlord.find(session[:landlord_id])
+      if @landlord 
+        @landlord_properties = @landlord.properties
+        erb :"landlords/properties"
+      else
+        redirect "/login"
+      end
+  end
+
+  get "/landlords/properties/:property_id" do
+     @property = Property.find(params[:property_id])
+
+     erb :"landlords/properties_view"
+  end
+
   get "/landlords/:id" do
     @landlord = Landlord.find_by(id: params[:id])
     erb :"/landlords/show"
@@ -30,6 +46,8 @@ class LandlordsController < ApplicationController
 
     redirect "/landlords/#{@landlord.id}"
   end
+
+
 
   get "/logout" do
     session.clear

@@ -1,0 +1,7 @@
+<h1>All Properties</h1>
+<% @properties.each do |property| %>
+    
+    <h4><a href="/properties/<%= property.id %>"><%= property.address %></a></h4>
+    <img src="<%= property.image_url %>" alt="<%= property.address %>" height="200" width="200">
+    
+<% end %>

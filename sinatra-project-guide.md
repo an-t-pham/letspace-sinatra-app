@@ -68,21 +68,41 @@
 add your login/signup/signout routes 
 
 **MOVE ON TO SIGN UP**
-- [] 13. Build routes and views for signup
+- [x] 13. Build routes and views for signup
     - Build your 'get' signup route + "signup" view
     - Build your 'post' signup route
 
 **WRAP UP WITH LOG OUT**
-- [] 14. Build your 'get' logout route
+- [x] 14. Build your 'get' logout route
 
 ### PART 3 - CRUD: Create, Read, Update, Delete
 
-- [] 15. Create your 'PostsController'
-  - Mount new controller in 'config.ru' with 'use PostsController'
-  - **Ask**: Why do we add this?
+- [x] 15. Create your 'PropertiesController'
+   - Mount new controller in 'config.ru' with 'use PropertiesController'
+ 
 
 - [] 16. Implement READ functionality
+   - Create 'get' posts route
+   - Create 'post' route to create new post
 
+- [] 17. Implement CREATE functionality
+   - Create 'get' posts route and view to render form
+   - Create 'post' route to create new post
+
+- [] 18. Implement UPDATE functionality
+   - Add 'use Rack::MethodOverride' in 'config.ru'
+   - ** Ask**: Why do we add this?
+   - Create 'get' route and view to render form
+   - Create 'patch' route to update an existing post
+
+- [] 19. Implement DELETE functionality
+   - Create 'delete' form in relevant view
+   - Create 'delete' route to delete post
+
+
+### PART 4 - Tighten Up!: Validations and Authorization
+
+ - [] 20. Implement 'sinatra-flash' gem to display validation
 
    
-Build out controller routes for other models (add a controller for each model)
+
