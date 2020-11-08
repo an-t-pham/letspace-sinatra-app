@@ -1,0 +1,20 @@
+<h1><%= @tenant.name %> </h1>
+<img src="<%= @tenant.image_url %>" alt="<%= @tenant.name %> profile photo" height="250" width="200">
+<br><br>
+
+<p>Email: <%= @tenant.email %></p>
+<p>Profile: <%= @tenant.profile %></p>
+
+<a href="/properties">View all properties</a>
+<br>
+<a href="/tenants/<%= @tenant.id %>/edit">Edit Account</a>
+<form method="post" action="/tenants/<%= @tenant.id %>">
+  <input type="hidden" name="_method" value="delete" />
+  <input type="submit" value="Delete Account" />
+</form>
+<br>
+<a href="/logout">Log Out</a>
+<br>
+
+
+</ul>

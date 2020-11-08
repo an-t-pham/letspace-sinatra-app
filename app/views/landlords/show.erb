@@ -1,17 +1,24 @@
 <h1><%= @landlord.name %> </h1>
 <img src="<%= @landlord.image_url %>" alt="<%= @landlord.name %> profile photo" height="250" width="200">
 <br><br>
+
 <a href="/landlords/properties">All Properties</a>
+<br>
+<a href="/landlords/tenants">All Tenants</a>
+<br>
 <p>Email: <%= @landlord.email %></p>
 <p>Bio: <%= @landlord.bio %></p>
+<br>
+<a href="/landlords/<%= @landlord.id %>/edit">Edit Account</a>
+<form method="post" action="/landlords/<%= @landlord.id %>">
+  <input type="hidden" name="_method" value="delete" />
+  <input type="submit" value="Delete Account" />
+</form>
+<br>
 
-
-
-
-<a href="/">Add a Property</a>
 <a href="/logout">Log Out</a>
 <br>
-<a href="/">< Back</a>
+
 
 </ul>
 

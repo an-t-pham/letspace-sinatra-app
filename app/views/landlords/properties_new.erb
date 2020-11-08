@@ -1,0 +1,31 @@
+<h2>New Property</h2>
+
+<form action="/landlords/properties" method="post">
+<ol>
+  <li><label for="address">Address: </label>
+  <input type="text" name="address" value=""></li>
+  <br>
+  <li><label for="price">Price: </label>
+  <input type="text" name="price" value=""></li>
+  <br>
+  <li><label for="description">Description: </label>
+  <input type="text" name="description" value=""></li>
+  <br>
+  <li><label for="image_url">Image URL: </label>
+  <input type="text" name="image_url" value=""></li>
+  <br>
+  
+  <input type="text" name="image_url" value=""></li>
+  <br>
+  <li><label for="current_tenants">Current Tenants: </label>
+  <% @tenants.each do |tenant| %>
+    <input type="checkbox" name="property[tenant_ids][]" id="<%= tenant.name %>" value="<%= tenant.id %>"><%= tenant.name %><br>
+  <% end %>
+  <br>
+
+  <input type="submit" name="" value="Create Property">
+
+</form>
+<br><br>
+
+<a href="/landlords/properties">< Back</a>

@@ -3,8 +3,18 @@
 <p>Price:<%= @property.price %><p>
 <p>Description:<%= @property.description %><p>
 <ul>Current Tenants:
-   <% @property.tenants.each do |tenant|  %>
+   <% @tenants.each do |tenant|  %>
         <li><%= tenant.name %></li>
     <% end %>
 </ul>
-
+<ul>Previous Tenants:
+   <% @previous_tenants.each do |tenant|  %>
+        <li><%= tenant.name %></li>
+    <% end %>
+</ul>
+<a href="/landlords/properties/<%= @property.id %>/edit">Edit</a>
+<form method="post" action="/landlords/properties/<%= @property.id %>">
+  <input type="hidden" name="_method" value="delete" />
+  <input type="submit" value="Delete" />
+</form>
+<a href="/landlords/properties">< Back</a>

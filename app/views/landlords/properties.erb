@@ -1,10 +1,9 @@
 <h1>All of Your Properties</h1>
-<% @landlord_properties.each do |property| %>
-    
+<% @landlord.properties.each do |property| %>
     <h4><a href="/landlords/properties/<%= property.id %>"><%= property.address %></a></h4>
-    
-    
+
 <% end %>
 <br><br>
-
+<a href="/landlords/properties/new">Add a Property</a>
+<br>
 <a href="/landlords/<%= @landlord.id %>">< Back</a>

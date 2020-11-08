@@ -1,0 +1,28 @@
+<h2>Edit Property</h2>
+
+<form action="/landlords/properties/<%= @property.id %>" method="post">
+<input id="hidden" type="hidden" name="_method" value="patch">
+<ol>
+  <li><label for="address">Address: </label>
+  <input type="text" name="property[address]" value="<%= @property.address %>"></li>
+  <br>
+  <li><label for="price">Price: </label>
+  <input type="text" name="property[price]" value="<%= @property.price %>"></li>
+  <br>
+  <li><label for="description">Description: </label>
+  <input type="text" name="property[description]" value="<%= @property.description %>"></li>
+  <br>
+  <li><label for="image_url">Image URL: </label>
+  <input type="text" name="property[image_url]" value="<%= @property.image_url %>"></li>
+  <br>
+  <li><label for="current_tenants">Current Tenants: </label>
+  <% @tenants.each do |tenant| %>
+    <input type="checkbox" name="property[tenant_ids][]" id="<%= tenant.name %>" value="<%= tenant.id %>"<%='checked' if @current_tenants.include?(tenant) %>><%= tenant.name %><br>
+  <% end %>
+  <br>
+  <input type="submit" name="" value="Submit">
+
+</form>
+
+
+<a href="/landlords/properties">Cancel</a>

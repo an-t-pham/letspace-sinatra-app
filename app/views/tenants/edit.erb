@@ -1,0 +1,26 @@
+<h2>Edit Your Account</h2>
+
+<form action="/tenants/<%= @tenant.id %>" method="post">
+<input id="hidden" type="hidden" name="_method" value="patch">
+<ol>
+  <li><label for="name">Name: </label>
+  <input type="text" name="tenant[name]" value="<%= @tenant.name %>"></li>
+  <br>
+  <li><label for="email">Email: </label>
+  <input type="text" name="tenant[email]" value="<%= @tenant.email %>"></li>
+  <br>
+  <li><label for="password">Password: </label>
+  <input type="password" name="tenant[password]" value="<%= @tenant.password %>"></li>
+  <br>
+  <li><label for="profile">Profile: </label>
+  <input type="text" name="tenant[profile]" value="<%= @tenant.profile %>"></li>
+  <br>
+  <li><label for="image_url">Image URL: </label>
+  <input type="text" name="tenant[image_url]" value="<%= @tenant.image_url %>"></li>
+  <br>
+  <input type="submit" name="" value="Submit">
+
+</form>
+<br><br>
+
+<a href="/">< Back</a>
