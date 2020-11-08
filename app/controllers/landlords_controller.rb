@@ -41,6 +41,7 @@ class LandlordsController < ApplicationController
   end
 
   post "/landlords/properties" do
+    
     @property = Property.create(params)
     @property.landlord_id = session[:landlord_id]
     @property.save
@@ -56,7 +57,7 @@ class LandlordsController < ApplicationController
     @landlord = Landlord.find(session[:landlord_id])
     if @landlord
       @current_tenants = @landlord.properties.collect do |property| 
-        property.tenants.filter {|tenant| property.id == tenant.current_property_id}
+        property.tenants
       end
       @current_tenants.flatten!
                                
@@ -68,33 +69,26 @@ class LandlordsController < ApplicationController
 
   get "/landlords/properties/:property_id" do
      @property = Property.find(params[:property_id])
-     @tenants = @property.tenants.filter {|tenant| @property.id == tenant.current_property_id}
-     @previous_tenants = @property.tenants.filter {|tenant| @property.id != tenant.current_property_id}
-
+     @tenants = @property.tenants
      erb :"/landlords/properties_view"
   end
 
   get "/landlords/properties/:property_id/edit" do
     @property = Property.find(params[:property_id])
     @tenants = Tenant.all
-    @current_tenants = @property.tenants.filter {|tenant| @property.id == tenant.current_property_id}
+    @current_tenants = @property.tenants
     erb :"landlords/properties_edit"
   end
 
   patch "/landlords/properties/:property_id" do
     @property = Property.find(params[:property_id])
     @property.update(params[:property])
+    @property.save
+    binding.pry
     redirect "/landlords/properties/#{@property.id}"
   end
 
   delete "/landlords/properties/:property_id" do
-    @property = Property.find(params[:property_id])
-    @current_tenants = @property.tenants.filter {|tenant| @property.id == tenant.current_property_id}
-    @current_tenants.each do |tenant|
-      tenant.current_property_id = nil
-      tenant.save
-    end
-   
     Property.destroy(params[:property_id])
     redirect to "/landlords/properties"
   end
@@ -106,9 +100,20 @@ class LandlordsController < ApplicationController
   end
 
   get "/landlords/:id/edit" do
+    @landlord = Landlord.find(params[:id])
     erb :"/landlords/edit"
   end
 
+  patch "/landlords/:id" do
+    @landlord = Landlord.find(params[:id])
+    @landlord.update(params[:landlord])
+    redirect "/landlords/#{@landlord.id}"
+  end
+
+  delete "/landlords/:id" do
+    Landlord.destroy(params[:id])
+    redirect to "/"
+  end
 
   get "/logout" do
     session.clear

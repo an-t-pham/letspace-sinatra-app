@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201106150131) do
+ActiveRecord::Schema.define(version: 20201108150253) do
 
   create_table "landlords", force: :cascade do |t|
     t.string   "name"
@@ -44,9 +44,8 @@ ActiveRecord::Schema.define(version: 20201106150131) do
     t.string   "name"
     t.text     "profile"
     t.string   "image_url"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.integer  "current_property_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "email"
     t.string   "password_digest"
   end

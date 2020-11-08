@@ -15,11 +15,9 @@
   <input type="text" name="image_url" value=""></li>
   <br>
   
-  <input type="text" name="image_url" value=""></li>
-  <br>
   <li><label for="current_tenants">Current Tenants: </label>
   <% @tenants.each do |tenant| %>
-    <input type="checkbox" name="property[tenant_ids][]" id="<%= tenant.name %>" value="<%= tenant.id %>"><%= tenant.name %><br>
+    <input type="checkbox" name="tenant_ids[]" id="<%= tenant.name %>" value="<%= tenant.id %>"><%= tenant.name %><br>
   <% end %>
   <br>
 

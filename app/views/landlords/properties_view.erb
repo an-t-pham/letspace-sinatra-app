@@ -2,16 +2,12 @@
 <img src="<%= @property.image_url %>" alt="<%= @property.address %>" height="200" width="200">
 <p>Price:<%= @property.price %><p>
 <p>Description:<%= @property.description %><p>
-<ul>Current Tenants:
+<ul>Tenants:
    <% @tenants.each do |tenant|  %>
         <li><%= tenant.name %></li>
     <% end %>
 </ul>
-<ul>Previous Tenants:
-   <% @previous_tenants.each do |tenant|  %>
-        <li><%= tenant.name %></li>
-    <% end %>
-</ul>
+         
 <a href="/landlords/properties/<%= @property.id %>/edit">Edit</a>
 <form method="post" action="/landlords/properties/<%= @property.id %>">
   <input type="hidden" name="_method" value="delete" />

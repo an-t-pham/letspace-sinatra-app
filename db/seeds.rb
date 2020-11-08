@@ -20,10 +20,3 @@ london_peter = PropertyTenant.create(property_id: london.id, tenant_id: peter.id
 london_hook = PropertyTenant.create(property_id: london.id, tenant_id: hook.id)
 camplin_hook = PropertyTenant.create(property_id: camplin.id, tenant_id: hook.id)
 
-peter.current_property_id = london.id
-wendy.current_property_id = dulverton.id
-hook.current_property_id = london.id
-
-peter.save
-wendy.save
-hook.save

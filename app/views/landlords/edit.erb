@@ -1,1 +1,26 @@
+<h2>Edit Your Account</h2>
+
+<form action="/landlords/<%= @landlord.id %>" method="post">
 <input id="hidden" type="hidden" name="_method" value="patch">
+<ol>
+  <li><label for="name">Name: </label>
+  <input type="text" name="landlord[name]" value="<%= @landlord.name %>"></li>
+  <br>
+  <li><label for="email">Email: </label>
+  <input type="text" name="landlord[email]" value="<%= @landlord.email %>"></li>
+  <br>
+  <li><label for="password">Password: </label>
+  <input type="password" name="landlord[password]" value="<%= @landlord.password %>"></li>
+  <br>
+  <li><label for="bio">Bio: </label>
+  <input type="text" name="landlord[bio]" value="<%= @landlord.bio %>"></li>
+  <br>
+  <li><label for="image_url">Image URL: </label>
+  <input type="text" name="landlord[image_url]" value="<%= @landlord.image_url %>"></li>
+  <br>
+  <input type="submit" name="" value="Submit">
+
+</form>
+<br><br>
+
+<a href="/">< Back</a>
