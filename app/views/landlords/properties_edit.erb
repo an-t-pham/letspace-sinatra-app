@@ -1,3 +1,4 @@
+<div class="welcome_landlord1" style="position: unset; color:lightpink;">
 <h2>Edit Property</h2>
 
 <form action="/landlords/properties/<%= @property.id %>" method="post">
@@ -16,13 +17,14 @@
   <input type="text" name="property[image_url]" value="<%= @property.image_url %>"></li>
   <br>
   <li><label for="tenants">Tenants: </label>
+  <br>
   <% @tenants.each do |tenant| %>
     <input type="checkbox" name="property[tenant_ids][]" id="<%= tenant.name %>" value="<%= tenant.id %>"<%='checked' if @current_tenants.include?(tenant) %>><%= tenant.name %><br>
   <% end %>
   <br>
-  <input type="submit" name="" value="Submit">
-
+  <input class="add_property" style="border: none; font-size:16px;" type="submit" name="" value="Submit">
+  <a class="back_button" style="font-weight:bold; padding: 10px;" href="/landlords/properties/<%= @property.id %>">Cancel</a>
 </form>
+</div>
 
 
-<a href="/landlords/properties">Cancel</a>

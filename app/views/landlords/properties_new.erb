@@ -1,4 +1,5 @@
-<h2>New Property</h2>
+<div class="welcome_landlord1" style="position: unset; color:lightpink;">
+<h2 >New Property</h2>
 
 <form action="/landlords/properties" method="post">
 <ol>
@@ -15,15 +16,18 @@
   <input type="text" name="image_url" value=""></li>
   <br>
   
-  <li><label for="current_tenants">Current Tenants: </label>
+  <li><label for="current_tenants">Tenants: </label>
+  <br>
   <% @tenants.each do |tenant| %>
     <input type="checkbox" name="tenant_ids[]" id="<%= tenant.name %>" value="<%= tenant.id %>"><%= tenant.name %><br>
   <% end %>
   <br>
 
-  <input type="submit" name="" value="Create Property">
+  <input class="add_property" style="border: none;" type="submit" name="" value="Create Property">
 
 </form>
 <br><br>
 
-<a href="/landlords/properties">< Back</a>
+<a class="back_button" href="/landlords/properties">&#8249; Back</a>
+</div>
+

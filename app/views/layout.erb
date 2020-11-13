@@ -12,12 +12,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="/stylesheets/main.css" />
+    <link rel="stylesheet" href="/stylesheets/index.css" />
   </head>
   <body>
     <div class="wrapper">
-        <div class="nav">
-         
-        </div>
+      <% if flash[:error] %>
+      <h3 style="color:lightpink; text-align:center; padding-top: 20px;"><%= flash[:error]%></h3>
+      <% end %>
+
+      <% if flash[:message] %>
+      <h3 style="color:lightblue; text-align:center; padding-top: 20px;"><%= flash[:message]%></h3>
+      <% end %>
+
+      <% if flash[:not_logged_in] %>
+      <h3 style="color:lightpink; text-align:center; padding-top: 20px;"><%= flash[:not_logged_in]%></h3>
+      <% end %>
+
+      <% if flash[:tenant_error] %>
+      <h3 style="color:lightpink; text-align:center; padding-top: 20px;"><%= flash[:tenant_error]%></h3>
+      <% end %>
+
+      <% if flash[:tenant_message] %>
+      <h3 style="color:lightblue; text-align:center; padding-top: 20px;"><%= flash[:tenant_message]%></h3>
+      <% end %>
+
+      <% if flash[:tenant_not_logged_in] %>
+      <h3 style="color:lightpink; text-align:center; padding-top: 20px;"><%= flash[:tenant_not_logged_in]%></h3>
+      <% end %>
+
+     
+      <div class="nav">
+          
+      </div>
+    
+    
         <%= yield %>
 
       <footer class="branding">

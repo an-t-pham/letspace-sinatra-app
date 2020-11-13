@@ -1,10 +1,6 @@
 @media screen {
   /* --- Reset Styles --- */
-  * {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
+  
 
   html, body {
     height: 100%;
@@ -24,9 +20,8 @@
     -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
     box-shadow: 0 0 10px rgba(0,0,0,.3);
-    margin: 16px auto;
+    margin: auto;
     max-width: 960px;
-    padding: 2.25%; /* 18px / 800px */
     width: 85%;
   }
 
@@ -77,9 +72,12 @@
   }
 
   footer.branding {
-    border-top: 2px solid #ccc;
-    margin-top: 20px;
-    padding-top: 20px;
+    color: lightblue ;
+    position: relative;
+    top: -30px;
+    margin: auto;
+    width: 20%;
+    height: 0;
   }
 }
 

@@ -12,8 +12,10 @@ class TenantsController < ApplicationController
         tenant = Tenant.find_by(email: params[:email])
         if tenant && tenant.authenticate(params[:password])
            session[:tenant_id] = tenant.id
+           flash[:tenant_message] = "Welcome back #{tenant.name}!"
            redirect "/tenants/#{tenant.id}"
         else
+          flash[:tenant_error] = "Your email or password were invalid. Please try again!"
           redirect "/tenants/login"
         end
       end
@@ -28,6 +30,16 @@ class TenantsController < ApplicationController
        session[:tenant_id] = @tenant.id
     
        redirect "/tenants/#{@tenant.id}"
+    end
+
+    get "/tenants/logout" do
+      #if landlord_logged_in?
+        session.clear
+        redirect "/"
+      # else
+      #   flash[:not_logged_in] = "Please log in!"
+      #   redirect "landlords/login"
+      # end
     end
 
     get "/tenants/:id" do

@@ -1,6 +1,11 @@
-<h1> <%= @property.address %> </h1>
+<div class="property" style="padding: 50px;">
+<h1 style="color:lightpink"> <%= @property.address %> </h1>
 
 
-<img src="<%= @property.image_url %>" alt="<%= @property.address %>" height="200" width="200">
-<p>Price:<%= @property.price %><p>
-<p>Description:<%= @property.description %><p>
+<img style="max-width: 100%;max-height: 100%;" src="<%= @property.image_url %>" alt="<%= @property.address %>">
+<p style="color:lightpink">Price:<%= @property.price %><p>
+<p style="color:lightpink">Description:<%= @property.description %><p>
+<p style="color:lightpink"> If interested, please contact me at <%= @landlord.email %>!</a></p>
+<br>
+<a href="/properties" class="back_button">&#8249; Back</a>
+</div>

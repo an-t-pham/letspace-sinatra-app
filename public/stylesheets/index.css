@@ -1,0 +1,227 @@
+.container {
+    text-align: center;
+    background-image: url("../images/img_01_kitchen.jpg");
+    background-size: cover;
+    height: 100vh;
+}
+
+.headline {
+    color:lightpink;
+}
+
+.container a {
+    background-color: lightpink;
+    color: white;
+    padding: 20px;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+.container a:hover {
+    background-color: lightblue;
+    cursor: pointer;
+  }
+
+.landing_container {
+   display: flex;
+   justify-content: space-around;
+   width: 60%;
+   margin: auto;
+}
+
+.welcome_container {
+    position: relative;
+    top: 35vh;
+    background: rgb(58 86 109 / 75%);
+    padding: 20px;
+}
+
+.wrapper {
+    padding: 0;
+}
+
+.hi_landlord {
+    color: lightpink;
+}
+
+.welcome_landlord {
+    text-align: center;
+    background-image: url("../images/Cozy-Little-Wooden-House-with-a-Vintage-Touch-Youll-Love-4.jpg");
+    background-size: cover;
+    height: 100vh;
+}
+
+.button_landlord a {
+    background-color: lightpink;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+.button_landlord a:hover {
+    background-color: lightblue;
+    cursor: pointer;
+  }
+
+.welcome_landlord1 {
+    position: relative;
+    top: 35vh;
+    background: rgb(58 86 109 / 75%);
+    padding: 5px;
+}
+
+.button_landlord {
+   display: flex;
+   justify-content: space-around;
+   height: 40px;
+}
+
+.back_button_welcome{
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 12px;
+    background-color: lightpink;
+    color: white;
+    position: relative;
+    top: 400px;
+}
+
+.back_button_welcome:hover {
+    background-color: lightblue;
+    cursor: pointer;
+}
+
+#welcome {
+    top: 400px;
+}
+
+.login {
+    color: lightpink;
+    font-weight: bold;
+}
+
+.login_button {
+    background-color: lightpink;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+.login_button:hover {
+    background-color: lightblue;
+    cursor: pointer;
+  }
+
+.profile {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 2fr 1fr 1fr 2fr;
+}
+
+.profile img {
+    grid-column: 1/2;
+    grid-row: 1/4;
+    border-radius: 50%;
+    padding: 20px;
+}
+
+.info {
+    grid-column: 2/4;
+}
+
+.modify {
+    grid-row: 3/4;
+    grid-column: 2/3;
+    display: flex;
+    justify-content: space-evenly;
+    height: 40px
+}
+
+.modify a {
+    background-color: lightpink;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: bold;
+    height: 20px;
+}
+
+.modify a:hover {
+    background-color: lightblue;
+    cursor: pointer
+}
+
+#log_out {
+    grid-column: 2/3;
+}
+
+.delete input {
+    font-size: 100%;
+    font-family: inherit;
+    border: 0;
+    padding: 0;
+    background-color: lightpink;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: bold;  
+}
+
+.delete input:hover {
+    background-color: lightblue;
+    cursor: pointer
+}
+
+.back_button{
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 12px;
+    background-color: lightpink;
+    color: white;
+    position: relative;
+}
+
+.back_button:hover {
+    background-color: lightblue;
+    cursor: pointer;
+}
+
+.add_property {
+    background-color: lightpink;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+.add_property:hover {
+    background-color: lightblue;
+    cursor: pointer;
+}
+
+.all_properties{
+    background-image: url("../images/livingroom.jpg");
+    background-size: cover;
+    height: 100vh;
+}
+
+.property_content {
+    position: relative;
+    top: 24vh;
+    background: rgb(58 86 109 / 75%);
+    padding: 40px;
+}
+
+
+
+ 

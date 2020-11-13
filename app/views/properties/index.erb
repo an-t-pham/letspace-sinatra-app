@@ -1,7 +1,10 @@
-<h1>All Properties</h1>
-<% @properties.each do |property| %>
+<div class="property_content" style="top:0;">
+    <h1 style="color:lightpink;">All Available Properties</h1>
+        <% @properties.each do |property| %>
     
-    <h4><a href="/properties/<%= property.id %>"><%= property.address %></a></h4>
-    <img src="<%= property.image_url %>" alt="<%= property.address %>" height="200" width="200">
-    
-<% end %>
+        <h4 style="color:lightpink;"><a href="/properties/<%= property.id %>"><%= property.address %> - <%= property.price %></a></h4>
+        <img src="<%= property.image_url %>" alt="<%= property.address %>" height="200" width="200" style="border-radius:50%;">
+        <% end %>
+<br><br>
+<a class="back_button" href="/tenants/<%= @tenant.id %>">&#8249; Back</a>
+</div>

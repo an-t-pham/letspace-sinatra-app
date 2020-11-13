@@ -1,7 +1,11 @@
-<h1>All of Your Tenants</h1>
+<div class="all_properties">
+  <div class="property_content">
+  <h1 style="color:lightpink;">All of Your Tenants</h1>
 <% @current_tenants.each_with_index do |tenant, index| %>
     <h4><%= index + 1 %>. <a href="/tenants/<%= tenant.id %>"><%= tenant.name %></a></h4>
 
 <% end %>
 <br>
-<a href="/landlords/<%= @landlord.id %>">< Back</a>
+   <a class="back_button" href="/landlords/<%= @landlord.id %>">< Back</a>
+  </div>
+</div>  

@@ -1,3 +1,4 @@
+<div class="welcome_landlord1" style="position: unset; color:lightpink;">
 <h2>Edit Your Account</h2>
 
 <form action="/tenants/<%= @tenant.id %>" method="post">
@@ -18,9 +19,8 @@
   <li><label for="image_url">Image URL: </label>
   <input type="text" name="tenant[image_url]" value="<%= @tenant.image_url %>"></li>
   <br>
-  <input type="submit" name="" value="Submit">
-
+  <input class="add_property" style="border: none; font-size:16px;" type="submit" name="" value="Submit">
+  <a class="back_button" style="font-weight:bold; padding: 10px;" href="/tenants/<%= @tenant.id %>">Cancel</a>
 </form>
-<br><br>
+</div>
 
-<a href="/">< Back</a>

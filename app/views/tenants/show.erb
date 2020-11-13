@@ -1,20 +1,25 @@
-<h1><%= @tenant.name %> </h1>
+<div class="profile">
+
 <img src="<%= @tenant.image_url %>" alt="<%= @tenant.name %> profile photo" height="250" width="200">
-<br><br>
+<div class="info">
+  <h1><%= @tenant.name %> </h1>
+  <p>Email: <%= @tenant.email %></p>
+  <p>Profile: <%= @tenant.profile %></p>
+</div>
+<% if %>
+  <div class="button_landlord" id="see_all">
+    <a href="/properties">View All Available Properties</a>
+  </div>
 
-<p>Email: <%= @tenant.email %></p>
-<p>Profile: <%= @tenant.profile %></p>
-
-<a href="/properties">View all properties</a>
-<br>
-<a href="/tenants/<%= @tenant.id %>/edit">Edit Account</a>
-<form method="post" action="/tenants/<%= @tenant.id %>">
-  <input type="hidden" name="_method" value="delete" />
-  <input type="submit" value="Delete Account" />
-</form>
-<br>
-<a href="/logout">Log Out</a>
-<br>
-
-
-</ul>
+  <div class="modify">
+    <a href="/tenants/<%= @tenant.id %>/edit">Edit Account</a>
+    <form class="delete" method="post" action="/tenants/<%= @tenant.id %>">
+      <input type="hidden" name="_method" value="delete" />
+      <input type="submit" value="Delete Account" />
+    </form>
+  </div>
+  <div class="button_landlord" id="log_out">
+   <a href="/tenants/logout">Log Out</a>
+  </div>
+<%end%>
+</div>

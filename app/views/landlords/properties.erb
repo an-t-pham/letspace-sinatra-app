@@ -1,9 +1,15 @@
-<h1>All of Your Properties</h1>
-<% @landlord.properties.each do |property| %>
-    <h4><a href="/landlords/properties/<%= property.id %>"><%= property.address %></a></h4>
+<div class="all_properties">
+  <div class="property_content">
+  <h1 style="color:lightpink;">All of Your Properties</h1>
+  <a class="add_property" href="/landlords/properties/new">Add New Property</a>
+  <ul>
+  <% @landlord.properties.each do |property| %>
+      <li><h4><a href="/landlords/properties/<%= property.id %>"><%= property.address %></a></h4></li>
+  <% end %>
+  </ul>
+  <br><br>
 
-<% end %>
-<br><br>
-<a href="/landlords/properties/new">Add a Property</a>
-<br>
-<a href="/landlords/<%= @landlord.id %>">< Back</a>
+  <br>
+  <a class="back_button" href="/landlords/<%= @landlord.id %>">&#8249; Back</a>
+  </div>
+</div>

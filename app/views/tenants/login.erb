@@ -1,11 +1,17 @@
-<h1>Please Log In!</h1>
+<div class="welcome_landlord">
+  <div class="welcome_landlord1">
+    <h1 class="hi_landlord">Please Log In!</h1>
+     <div class="button_landlord"> 
+      <form class="login" action="/tenants/login" method="post">
+      <label for="email" id="email">Email:</label>
+      <input type="text" name="email" id="email" value="">
+      <label for="password" id="password">Password:</label>
+      <input type="password" name="password" id="password" value="">
+      <input class="login_button" type="submit" name="" value="Log In">
+      </form>
+     </div>
+  </div>
+  <a href="/tenants/welcome" class="back_button_welcome">&#8249; Back</a>
+</div>
 
-<form class="" action="/tenants/login" method="post">
-  <label for="email" id="email">Email:</label>
-  <input type="text" name="email" id="email" value="">
-  <label for="password" id="password">Password:</label>
-  <input type="password" name="password" id="password"value="">
-  <input type="submit" name="" value="Log In">
-</form>
-<br>
-<a href="/">< Back</a>
+     

@@ -7,10 +7,11 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "very_secret_session"
+    register Sinatra::Flash
   end
 
   get "/" do
-    if logged_in?
+    if landlord_logged_in?
       redirect "/landlords/#{current_landlord.id}"
     else
       erb :welcome
@@ -22,8 +23,16 @@ class ApplicationController < Sinatra::Base
       Landlord.find_by(id: session[:landlord_id])
     end
 
-    def logged_in?
+    def landlord_logged_in?
       !!current_landlord
+    end
+
+    def current_tenant
+      Tenant.find_by(id: session[:tenant_id])
+    end
+
+    def tenant_logged_in?
+      !!current_tenant
     end
   end
 
