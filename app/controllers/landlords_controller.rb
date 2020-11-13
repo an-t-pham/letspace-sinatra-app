@@ -25,7 +25,7 @@ class LandlordsController < ApplicationController
       session.clear
       redirect "/"
     else
-      flash[:not_logged_in] = "Please log in!"
+      flash[:error] = "You're not logged in!"
       redirect "landlords/login"
     end
   end
@@ -35,11 +35,15 @@ class LandlordsController < ApplicationController
   end
 
   post "/landlords" do
-    @landlord = Landlord.create(params)
-
-    session[:landlord_id] = @landlord.id
-
-    redirect "/landlords/#{@landlord.id}"
+    @landlord = Landlord.new(params)
+    if @landlord.save
+       session[:landlord_id] = @landlord.id
+       flash[:message] = "Account successfully created!"
+       redirect "/landlords/#{@landlord.id}"
+    else
+       flash[:error] = "Account creation failed: #{@landlord.errors.full_messages.to_sentence}"
+       redirect "/landlords/signup"
+    end
   end
 
 
@@ -48,7 +52,7 @@ class LandlordsController < ApplicationController
       @landlord = Landlord.find(session[:landlord_id])
       erb :"landlords/properties"
     else
-      flash[:not_logged_in] = "Please log in!"
+      flash[:error] = "Please log in to see properties!"
       redirect "landlords/login"
     end
   end
@@ -57,9 +61,16 @@ class LandlordsController < ApplicationController
     if landlord_logged_in?
       @property = Property.create(params)
       @property.landlord_id = session[:landlord_id]
-      @property.save
+      if @property.save
+        flash[:message] = "Property successfully created!"
+        redirect "/landlords/properties"
+      else
+       flash[:error] = "Property creation failed: #{@property.errors.full_messages.to_sentence}"
+       redirect "/landlords/properties/new"
+      end
     end
-      redirect "/landlords/properties"
+    
+
   end
 
   get "/landlords/properties/new" do
@@ -67,7 +78,7 @@ class LandlordsController < ApplicationController
       @tenants = Tenant.all
       erb :"landlords/properties_new"
     else
-      flash[:not_logged_in] = "Please log in!"
+      flash[:error] = "Please log in to add new property!"
       redirect "landlords/login"
     end
   end
@@ -81,7 +92,7 @@ class LandlordsController < ApplicationController
         @current_tenants.flatten!                   
         erb :"landlords/tenants"
     else
-      flash[:not_logged_in] = "Please log in!"
+      flash[:error] = "Please log in! to see tenants"
       redirect "landlords/login"
     end
   end
@@ -92,7 +103,7 @@ class LandlordsController < ApplicationController
        @tenants = @property.tenants
        erb :"/landlords/properties_view"
     else
-        flash[:not_logged_in] = "Please log in!"
+        flash[:error] = "Please log in to see properties!"
         redirect "landlords/login"
     end
   end
@@ -104,7 +115,7 @@ class LandlordsController < ApplicationController
       @current_tenants = @property.tenants
       erb :"landlords/properties_edit"
     else
-      flash[:not_logged_in] = "Please log in!"
+      flash[:error] = "Please log in!"
       redirect "landlords/login"
     end
   end
@@ -132,7 +143,7 @@ class LandlordsController < ApplicationController
       @landlord = Landlord.find_by(id: params[:id])
       erb :"/landlords/show"
     else
-      flash[:not_logged_in] = "Please log in!"
+      flash[:error] = "Please log in!"
       redirect "landlords/login"
     end
   end
@@ -142,7 +153,7 @@ class LandlordsController < ApplicationController
       @landlord = Landlord.find(params[:id])
       erb :"/landlords/edit"
     else
-      flash[:not_logged_in] = "Please log in!"
+      flash[:error] = "Please log in!"
       redirect "landlords/login"
     end
   end
@@ -153,7 +164,7 @@ class LandlordsController < ApplicationController
       @landlord.update(params[:landlord])
       redirect "/landlords/#{@landlord.id}"
     else
-      flash[:not_logged_in] = "Please log in!"
+      flash[:error] = "Please log in!"
       redirect "landlords/login"
     end
   end
@@ -163,7 +174,7 @@ class LandlordsController < ApplicationController
       Landlord.destroy(params[:id])
       redirect to "/"
     else
-      flash[:not_logged_in] = "Please log in!"
+      flash[:error] = "Please log in!"
       redirect "landlords/login"
     end
   end

@@ -1,12 +1,12 @@
 <div class="profile">
-
+<% if tenant_logged_in? %>
 <img src="<%= @tenant.image_url %>" alt="<%= @tenant.name %> profile photo" height="250" width="200">
 <div class="info">
   <h1><%= @tenant.name %> </h1>
   <p>Email: <%= @tenant.email %></p>
   <p>Profile: <%= @tenant.profile %></p>
 </div>
-<% if %>
+
   <div class="button_landlord" id="see_all">
     <a href="/properties">View All Available Properties</a>
   </div>
@@ -21,5 +21,15 @@
   <div class="button_landlord" id="log_out">
    <a href="/tenants/logout">Log Out</a>
   </div>
+
+
+<%else%>
+<img src="<%= @tenant.image_url %>" alt="<%= @tenant.name %> profile photo" height="250" width="200">
+<div class="info">
+  <h1><%= @tenant.name %> </h1>
+  <p>Email: <%= @tenant.email %></p>
+  <p>Profile: <%= @tenant.profile %></p>
+  <a class="back_button" href="/landlords/<%= @landlord.id %>">&#8249; Back</a>
+</div>
 <%end%>
 </div>

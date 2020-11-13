@@ -16,7 +16,7 @@
   <input type="text" name="image_url" value=""></li>
   <br>
   
-  <li><label for="current_tenants">Tenants: </label>
+  <li><label for="tenants">Tenants: </label>
   <br>
   <% @tenants.each do |tenant| %>
     <input type="checkbox" name="tenant_ids[]" id="<%= tenant.name %>" value="<%= tenant.id %>"><%= tenant.name %><br>
