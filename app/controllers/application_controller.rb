@@ -38,6 +38,14 @@ class ApplicationController < Sinatra::Base
     def authorized_to_edit?(property)
       property.landlord == current_landlord
     end
+
+    def landlord_authorized?(landlord)
+      landlord == current_landlord
+    end
+
+    def tenant_authorized?(tenant)
+      tenant == current_tenant
+    end
   end
 
 end

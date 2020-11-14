@@ -50,17 +50,32 @@ class TenantsController < ApplicationController
        if tenant_logged_in? || landlord_logged_in?
         @tenant = Tenant.find_by(id: params[:id])
         @landlord = Landlord.find_by(session[:landlord_id])
-        erb :"/tenants/show"
+
+        if tenant_authorized?(@tenant)
+            erb :"/tenants/show"
+        else
+          @tenant = Tenant.find(session[:tenant_id])
+          flash[:error] = "Not authorized to access this profile!"
+          redirect "tenants/#{@tenant.id}"
+        end
+
        else
         flash[:error] = "Please log in!"
-        redirect "/tenants/login"
+        redirect "/"
         end
       end
     
     get "/tenants/:id/edit" do
       if tenant_logged_in?
         @tenant = Tenant.find(params[:id])
-        erb :"/tenants/edit"
+        if tenant_authorized?(@tenant)
+          erb :"/tenants/edit"
+        else
+          @tenant = Tenant.find(session[:tenant_id])
+          flash[:error] = "Not authorized to edit this profile!"
+          redirect "tenants/#{@tenant.id}"
+        end
+
       else
         flash[:error] = "Please log in!"
         redirect "/tenants/login"
@@ -70,8 +85,14 @@ class TenantsController < ApplicationController
     patch "/tenants/:id" do
       if tenant_logged_in?
         @tenant = Tenant.find(params[:id])
-        @tenant.update(params[:tenant])
-        redirect "/tenants/#{@tenant.id}"
+        if tenant_authorized?(@tenant)
+           @tenant.update(params[:tenant])
+           redirect "/tenants/#{@tenant.id}"
+        else
+            @tenant = Tenant.find(session[:tenant_id])
+            flash[:error] = "Not authorized to edit this profile!"
+            redirect "tenants/#{@tenant.id}"
+        end
       else
         flash[:error] = "Please log in!"
         redirect "/tenants/login"
@@ -79,7 +100,7 @@ class TenantsController < ApplicationController
     end
 
     delete "/tenants/:id" do
-      if tenant_logged_in?
+      if tenant_logged_in? && params[:id] == session[:tenant_id]
         Tenant.destroy(params[:id])
         redirect to "/"
       else

@@ -21,7 +21,7 @@ class LandlordsController < ApplicationController
   end
 
   get "/landlords/logout" do
-    if landlord_logged_in?
+    if landlord_logged_in? 
       session.clear
       redirect "/"
     else
@@ -92,7 +92,7 @@ class LandlordsController < ApplicationController
         @current_tenants.flatten!                   
         erb :"landlords/tenants"
     else
-      flash[:error] = "Please log in! to see tenants"
+      flash[:error] = "Please log in! to see your tenants"
       redirect "landlords/login"
     end
   end
@@ -100,20 +100,32 @@ class LandlordsController < ApplicationController
   get "/landlords/properties/:property_id" do
     if landlord_logged_in?
        @property = Property.find(params[:property_id])
-       @tenants = @property.tenants
-       erb :"/landlords/properties_view"
+       if authorized_to_edit?(@property)
+         @tenants = @property.tenants
+         erb :"/landlords/properties_view"
+        else 
+          @landlord = Landlord.find(session[:landlord_id])
+          flash[:error] = "Not authorized to access this property!"
+          redirect "landlords/#{@landlord.id}"
+        end
     else
-        flash[:error] = "Please log in to see properties!"
+        flash[:error] = "Please log in to access your own properties!"
         redirect "landlords/login"
     end
   end
 
   get "/landlords/properties/:property_id/edit" do
-    if landlord_logged_in?
+    if landlord_logged_in? 
       @property = Property.find(params[:property_id])
-      @tenants = Tenant.all
-      @current_tenants = @property.tenants
-      erb :"landlords/properties_edit"
+      @landlord = Landlord.find(session[:landlord_id])
+      if authorized_to_edit?(@property)
+        @tenants = Tenant.all
+        @current_tenants = @property.tenants
+        erb :"landlords/properties_edit"
+      else
+        flash[:error] = "Not authorized to edit this property!"
+        redirect "landlords/#{@landlord.id}"
+      end
     else
       flash[:error] = "Please log in!"
       redirect "landlords/login"
@@ -123,10 +135,21 @@ class LandlordsController < ApplicationController
   patch "/landlords/properties/:property_id" do
     if landlord_logged_in?
       @property = Property.find(params[:property_id])
-      @property.update(params[:property])
-      @property.save
+      if authorized_to_edit?(@property)
+         @property.update(params[:property])
+         @property.save
+         redirect "/landlords/properties/#{@property.id}"
+      else 
+        @landlord = Landlord.find(session[:landlord_id])
+        flash[:error] = "Not authorized to edit this property!"
+        redirect "landlords/#{@landlord.id}"
+      end
+
+    else
+      flash[:error] = "Please log in!"
+      redirect "landlords/login"
     end
-      redirect "/landlords/properties/#{@property.id}"
+      
   end
 
   delete "/landlords/properties/:property_id" do
@@ -139,11 +162,17 @@ class LandlordsController < ApplicationController
 
 
   get "/landlords/:id" do
-    if landlord_logged_in?
+    if landlord_logged_in? 
       @landlord = Landlord.find_by(id: params[:id])
-      erb :"/landlords/show"
+      if landlord_authorized?(@landlord)
+         erb :"/landlords/show"
+      else
+        @landlord = Landlord.find(session[:landlord_id])
+        flash[:error] = "Not authorized to access this profile!"
+        redirect "landlords/#{@landlord.id}"
+      end
     else
-      flash[:error] = "Please log in!"
+      flash[:error] = "Please log in to access your account!"
       redirect "landlords/login"
     end
   end
@@ -151,7 +180,13 @@ class LandlordsController < ApplicationController
   get "/landlords/:id/edit" do
     if landlord_logged_in?
       @landlord = Landlord.find(params[:id])
-      erb :"/landlords/edit"
+      if landlord_authorized?(@landlord)
+        erb :"/landlords/edit"
+      else
+        @landlord = Landlord.find(session[:landlord_id])
+        flash[:error] = "Not authorized to edit this profile!"
+        redirect "landlords/#{@landlord.id}"
+      end
     else
       flash[:error] = "Please log in!"
       redirect "landlords/login"
@@ -161,8 +196,14 @@ class LandlordsController < ApplicationController
   patch "/landlords/:id" do
     if landlord_logged_in?
       @landlord = Landlord.find(params[:id])
-      @landlord.update(params[:landlord])
-      redirect "/landlords/#{@landlord.id}"
+      if landlord_authorized?(@landlord)
+        @landlord.update(params[:landlord])
+        redirect "/landlords/#{@landlord.id}"
+      else
+        @landlord = Landlord.find(session[:landlord_id])
+        flash[:error] = "Not authorized to edit this profile!"
+        redirect "landlords/#{@landlord.id}"
+      end
     else
       flash[:error] = "Please log in!"
       redirect "landlords/login"
@@ -170,7 +211,7 @@ class LandlordsController < ApplicationController
   end
 
   delete "/landlords/:id" do
-    if landlord_logged_in?
+    if landlord_logged_in? && session[:landlord_id] == params[:id]
       Landlord.destroy(params[:id])
       redirect to "/"
     else
