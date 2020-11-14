@@ -100,8 +100,9 @@ class TenantsController < ApplicationController
     end
 
     delete "/tenants/:id" do
-      if tenant_logged_in? && params[:id] == session[:tenant_id]
+      if tenant_logged_in? && params[:id] == session[:tenant_id].to_s
         Tenant.destroy(params[:id])
+        flash[:message] = "Account successfully deleted"
         redirect to "/"
       else
         flash[:error] = "Please log in!"

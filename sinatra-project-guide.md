@@ -102,25 +102,25 @@ add your login/signup/signout routes
 
 ### PART 4 - Tighten Up!: Validations and Authorization
 
- - [] 20. Implement 'sinatra-flash' gem to display validation failures and improve user experience (UX)
+ - [x] 20. Implement 'sinatra-flash' gem to display validation failures and improve user experience (UX)
    - Review the [docs](https://github.com/SFEley/sinatra-flash)
    - **Tip**: a 'flash[:message]' has the lifecycle of one 'GET' request and will not show up rendering and 'erb' file.
- - [] 21. Include ActiveRecord validations in your 'User' and 'Post' model that checks for user inputs
+ - [x] 21. Include ActiveRecord validations in your 'User' and 'Post' model that checks for user inputs
    - **Ex**: Making sure all form fields are filled out or that a user is using an unique email or username
    - Review the [docs](https://guides.rubyonrails.org/active_record_validations.html)
    - **Tip**: 'has_secure_password' has a built in validation for the 'password_digest' attribute!
- - [] 22. Leverage the 'logged_in?' helper method in the controller and/or views to implement authorization for creating a new post.
+ - [x] 22. Leverage the 'logged_in?' helper method in the controller and/or views to implement authorization for creating a new post.
    - Make sure a user can't create a new post without being logged in. 
- - [] 23. Implement authorization to edit and delete. 
+ - [x] 23. Implement authorization to edit and delete. 
    - Make sure a user can't edit or delete a post that doesn't belong to them. 
- - [] 24. Refactor your code to make it more DRY!
+ - [x] 24. Refactor your code to make it more DRY!
    - **Ask** Where am I repeating myself?
- - [] 25. Create a 'README.md'
+ - [x] 25. Create a 'README.md'
    - Include a short description, install instructions, a contributors guide and a link to the license for your code
 
 ### Bonus
 
-- [] Leverage a CSS framekwork to improve the styling of your application 
+- [x] Leverage a CSS framekwork to improve the styling of your application 
   - Easiest to implement: [Bulma] (https://bulma.io/)
   - Most popular: [Bootsrap] (https://getbootstrap.com/)
   - Also good: [Semantic UI] (https://semantic-ui.com/)
