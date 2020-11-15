@@ -48,17 +48,9 @@ class TenantsController < ApplicationController
 
     get "/tenants/:id" do
        if tenant_logged_in? || landlord_logged_in?
-        @tenant = Tenant.find_by(id: params[:id])
-        @landlord = Landlord.find_by(session[:landlord_id])
-
-        if tenant_authorized?(@tenant)
+          @tenant = Tenant.find_by(id: params[:id])
+          @landlord = Landlord.find_by(session[:landlord_id])
             erb :"/tenants/show"
-        else
-          @tenant = Tenant.find(session[:tenant_id])
-          flash[:error] = "Not authorized to access this profile!"
-          redirect "tenants/#{@tenant.id}"
-        end
-
        else
         flash[:error] = "Please log in!"
         redirect "/"

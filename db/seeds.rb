@@ -10,8 +10,8 @@ dulverton = Property.create(address: "123 Dulverton Court", price: "£800pcm", d
 london = Property.create(address: "7 London Road", price: "£1000pcm", description: "big and clean house", image_url: "https://www.idesignarch.com/wp-content/uploads/Hyde-Park-Mews_1-1024x683.jpg", landlord_id: jane.id)
 camplin = Property.create(address: "43 Camplin Street", price: "£500pcm", description: "affordable house", image_url: "https://i.pinimg.com/originals/a3/4a/81/a34a81d706ca05ba8646d52de7167212.jpg", landlord_id: joe.id)
 
-peter = Tenant.create(name: "Peter P", profile: "A trustworthy tenant", image_url: "https://s3.ap-southeast-1.amazonaws.com/images.asianage.com/images/aa-Cover-5neknqovdb6hesko5h0c8jbr36-20180130131031.Medi.jpeg", email: "peter@test.com", password: "123")
-wendy = Tenant.create(name: "Wendy D", profile: "A clean tenant", image_url: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80", email: "wendy@test.com", password: "123")
+peter = Tenant.create(name: "Peter P", profile: "A trustworthy tenant", image_url: "https://lumiere-a.akamaihd.net/v1/images/open-uri20150422-20810-r3neg5_4c4b3ee3.jpeg?region=0,0,600,600&width=320", email: "peter@test.com", password: "123")
+wendy = Tenant.create(name: "Wendy D", profile: "A clean tenant", image_url: "https://i.pinimg.com/originals/0b/8f/bf/0b8fbfd4b3b0cf792d2db762af5cc381.jpg", email: "wendy@test.com", password: "123")
 hook = Tenant.create(name: "James H", profile: "An annoying tenant", image_url: "https://vignette.wikia.nocookie.net/disney/images/0/0b/Profile_-_Captain_Hook.jpeg/revision/latest?cb=20190312022618", email: "hook@test.com", password: "123")
 
 dulverton_peter = PropertyTenant.create(property_id: dulverton.id, tenant_id: peter.id)

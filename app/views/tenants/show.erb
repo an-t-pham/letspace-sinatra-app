@@ -1,5 +1,5 @@
 <div class="profile">
-<% if tenant_logged_in? %>
+
 <img src="<%= @tenant.image_url %>" alt="<%= @tenant.name %> profile photo" height="250" width="200">
 <div class="info">
   <h1><%= @tenant.name %> </h1>
@@ -7,10 +7,14 @@
   <p>Profile: <%= @tenant.profile %></p>
 </div>
 
+  <% if landlord_logged_in? %>
+  <a href="/landlords/tenants" class="back_button" style="height:20px; width:50px;">&#8249; Back</a>
+  <% end %>
+
+  <% if tenant_authorized?(@tenant) %>
   <div class="button_landlord" id="see_all">
     <a href="/properties">View All Available Properties</a>
   </div>
-
   <div class="modify">
     <a href="/tenants/<%= @tenant.id %>/edit">Edit Account</a>
     <form class="delete" method="post" action="/tenants/<%= @tenant.id %>">
@@ -21,15 +25,6 @@
   <div class="button_landlord" id="log_out">
    <a href="/tenants/logout">Log Out</a>
   </div>
+ <%end%>
 
-
-<%else%>
-<img src="<%= @tenant.image_url %>" alt="<%= @tenant.name %> profile photo" height="250" width="200">
-<div class="info">
-  <h1><%= @tenant.name %> </h1>
-  <p>Email: <%= @tenant.email %></p>
-  <p>Profile: <%= @tenant.profile %></p>
-  <a class="back_button" href="/landlords/<%= @landlord.id %>">&#8249; Back</a>
-</div>
-<%end%>
 </div>
