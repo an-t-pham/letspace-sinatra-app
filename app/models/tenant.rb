@@ -6,4 +6,5 @@ class Tenant < ActiveRecord::Base
     has_many :landlords, through: :properties
 
     validates :name, :profile, :image_url, :email, presence: true
+    validates_uniqueness_of :email
 end

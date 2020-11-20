@@ -155,6 +155,7 @@ class LandlordsController < ApplicationController
   delete "/landlords/properties/:property_id" do
     if landlord_logged_in?
       Property.destroy(params[:property_id])
+      flash[:message] = "Property successfully deleted"
     end
     redirect to "/landlords/properties"
     

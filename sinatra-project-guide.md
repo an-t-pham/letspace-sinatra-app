@@ -105,7 +105,7 @@ add your login/signup/signout routes
  - [x] 20. Implement 'sinatra-flash' gem to display validation failures and improve user experience (UX)
    - Review the [docs](https://github.com/SFEley/sinatra-flash)
    - **Tip**: a 'flash[:message]' has the lifecycle of one 'GET' request and will not show up rendering and 'erb' file.
- - [x] 21. Include ActiveRecord validations in your 'User' and 'Post' model that checks for user inputs
+ - [x] 21. Include ActiveRecord validations in your 'Landlord' and 'Property' model that checks for user inputs
    - **Ex**: Making sure all form fields are filled out or that a user is using an unique email or username
    - Review the [docs](https://guides.rubyonrails.org/active_record_validations.html)
    - **Tip**: 'has_secure_password' has a built in validation for the 'password_digest' attribute!
